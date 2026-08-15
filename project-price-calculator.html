@@ -9,197 +9,206 @@
 <meta name="description" content="Free project price calculator for freelancers. Calculate a professional project price using your hourly rate, estimated hours, revisions, expenses, fees and profit.">
 
 <style>
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f6f8f7;
-  color: #24332d;
-  line-height: 1.6;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6f8f7;
+    color: #24332d;
+    line-height: 1.6;
 }
 
-header {
-  background: #ffffff;
-  padding: 25px 20px;
-  text-align: center;
-  border-bottom: 1px solid #e3e8e5;
+nav {
+    background: #173b2a;
+    padding: 16px;
+    text-align: center;
 }
 
-header a {
-  text-decoration: none;
-  color: #315b48;
-  font-size: 20px;
-  font-weight: bold;
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 main {
-  max-width: 850px;
-  margin: auto;
-  padding: 35px 20px 60px;
+    max-width: 850px;
+    margin: auto;
+    padding: 50px 20px 60px;
 }
 
 h1 {
-  text-align: center;
-  font-size: 36px;
-  color: #315b48;
-  margin-bottom: 10px;
+    text-align: center;
+    font-size: 36px;
+    color: #315b48;
+    margin-bottom: 10px;
 }
 
 .intro {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 30px;
-  color: #59655f;
-  font-size: 17px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: #59655f;
+    font-size: 17px;
 }
 
 .calculator {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 28px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
 }
 
 .field {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 7px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
 }
 
-input, select {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #ccd6d0;
-  border-radius: 8px;
-  font-size: 16px;
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd6d0;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-input:focus, select:focus {
-  outline: none;
-  border-color: #315b48;
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #315b48;
 }
 
 .two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
 button {
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
-  background: #315b48;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #315b48;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 button:hover {
-  opacity: 0.92;
+    opacity: 0.92;
 }
 
 .result {
-  display: none;
-  margin-top: 30px;
-  background: #f0f6f2;
-  border-radius: 12px;
-  padding: 25px;
-  border: 1px solid #d7e5dc;
+    display: none;
+    margin-top: 30px;
+    background: #f0f6f2;
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #d7e5dc;
 }
 
 .result h2 {
-  margin-top: 0;
-  color: #315b48;
+    margin-top: 0;
+    color: #315b48;
 }
 
 .main-price {
-  text-align: center;
-  margin: 20px 0 25px;
+    text-align: center;
+    margin: 20px 0 25px;
 }
 
 .main-price span {
-  display: block;
-  font-size: 15px;
-  color: #59655f;
+    display: block;
+    font-size: 15px;
+    color: #59655f;
 }
 
 .main-price strong {
-  display: block;
-  font-size: 38px;
-  color: #315b48;
-  margin-top: 5px;
+    display: block;
+    font-size: 38px;
+    color: #315b48;
+    margin-top: 5px;
 }
 
 .breakdown {
-  border-top: 1px solid #d7e5dc;
-  padding-top: 15px;
+    border-top: 1px solid #d7e5dc;
+    padding-top: 15px;
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 9px 0;
-  border-bottom: 1px solid #e1e9e4;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 9px 0;
+    border-bottom: 1px solid #e1e9e4;
 }
 
 .effective {
-  font-weight: bold;
-  color: #315b48;
+    font-weight: bold;
+    color: #315b48;
 }
 
 .copy-button {
-  background: #ffffff;
-  color: #315b48;
-  border: 1px solid #315b48;
-  margin-top: 18px;
+    background: #ffffff;
+    color: #315b48;
+    border: 1px solid #315b48;
+    margin-top: 18px;
 }
 
 .note {
-  margin-top: 25px;
-  font-size: 14px;
-  color: #65716b;
-}
-
-.back-link {
-  display: inline-block;
-  margin-top: 30px;
-  color: #315b48;
-  font-weight: bold;
-  text-decoration: none;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #65716b;
 }
 
 @media (max-width: 650px) {
-  h1 {
-    font-size: 29px;
-  }
 
-  .two-columns {
-    grid-template-columns: 1fr;
-  }
+    h1 {
+        font-size: 29px;
+    }
 
-  .calculator {
-    padding: 20px;
-  }
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator {
+        padding: 20px;
+    }
+
+    nav a {
+        margin: 0 6px;
+        font-size: 14px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<header>
-<a href="index.html">The Beneficial</a>
-</header>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="hourly-rate-calculator.html">Hourly Rate</a>
+    <a href="work-hours-calculator.html">Work Hours</a>
+    <a href="project-price-calculator.html">Project Price</a>
+    <a href="invoice-number-generator.html">Invoice Generator</a>
+</nav>
 
 <main>
 
@@ -216,6 +225,7 @@ estimated work, revisions, expenses, platform fees and desired profit.
 
 <div class="field">
 <label for="currency">Currency</label>
+
 <select id="currency">
 <option value="$">USD ($)</option>
 <option value="€">EUR (€)</option>
@@ -226,30 +236,66 @@ estimated work, revisions, expenses, platform fees and desired profit.
 <option value="AED">AED</option>
 <option value="SAR">SAR</option>
 </select>
+
 </div>
 
 <div class="field">
 <label for="rate">Hourly Rate</label>
-<input type="number" id="rate" min="0" step="0.01" placeholder="e.g. 40">
+
+<input
+type="number"
+id="rate"
+min="0"
+step="0.01"
+placeholder="e.g. 40"
+>
+
 </div>
 
 </div>
 
 <div class="field">
+
 <label for="hours">Estimated Project Hours</label>
-<input type="number" id="hours" min="0" step="0.1" placeholder="e.g. 25">
+
+<input
+type="number"
+id="hours"
+min="0"
+step="0.1"
+placeholder="e.g. 25"
+>
+
 </div>
 
 <div class="two-columns">
 
 <div class="field">
+
 <label for="buffer">Revision / Contingency Buffer (%)</label>
-<input type="number" id="buffer" min="0" step="0.1" value="10">
+
+<input
+type="number"
+id="buffer"
+min="0"
+step="0.1"
+value="10"
+>
+
 </div>
 
 <div class="field">
+
 <label for="expenses">Additional Project Expenses</label>
-<input type="number" id="expenses" min="0" step="0.01" value="0">
+
+<input
+type="number"
+id="expenses"
+min="0"
+step="0.01"
+value="0"
+>
+
 </div>
 
 </div>
@@ -257,26 +303,50 @@ estimated work, revisions, expenses, platform fees and desired profit.
 <div class="two-columns">
 
 <div class="field">
+
 <label for="fee">Platform / Payment Fee (%)</label>
-<input type="number" id="fee" min="0" max="99" step="0.1" value="0">
+
+<input
+type="number"
+id="fee"
+min="0"
+max="99"
+step="0.1"
+value="0"
+>
+
 </div>
 
 <div class="field">
+
 <label for="profit">Desired Profit Markup (%)</label>
-<input type="number" id="profit" min="0" step="0.1" value="0">
-</div>
+
+<input
+type="number"
+id="profit"
+min="0"
+step="0.1"
+value="0"
+>
 
 </div>
 
-<button onclick="calculatePrice()">Calculate Project Price</button>
+</div>
+
+<button onclick="calculatePrice()">
+Calculate Project Price
+</button>
 
 <div class="result" id="result">
 
 <h2>Your Recommended Project Price</h2>
 
 <div class="main-price">
+
 <span>Recommended price to quote</span>
+
 <strong id="finalPrice">—</strong>
+
 </div>
 
 <div class="breakdown">
@@ -313,7 +383,9 @@ estimated work, revisions, expenses, platform fees and desired profit.
 
 </div>
 
-<button class="copy-button" onclick="copyResult()">Copy Result</button>
+<button class="copy-button" onclick="copyResult()">
+Copy Result
+</button>
 
 <p class="note">
 This calculator provides an estimate to help freelancers price projects.
@@ -324,8 +396,6 @@ taxes, contracts and other business costs.
 </div>
 
 </div>
-
-<a class="back-link" href="index.html">← Back to The Beneficial</a>
 
 </main>
 
@@ -342,13 +412,19 @@ const profit = parseFloat(document.getElementById("profit").value) || 0;
 const currency = document.getElementById("currency").value;
 
 if (!rate || rate < 0 || !hours || hours <= 0) {
+
 alert("Please enter a valid hourly rate and project hours.");
+
 return;
+
 }
 
 if (fee >= 100) {
+
 alert("Platform / payment fee must be below 100%.");
+
 return;
+
 }
 
 const baseLabor = rate * hours;
@@ -368,24 +444,35 @@ const feeValue = finalPrice * (fee / 100);
 const effectiveRate = finalPrice / hours;
 
 function money(value) {
-return currency + " " + value.toFixed(2);
+    return currency + " " + value.toFixed(2);
 }
 
 document.getElementById("baseLabor").textContent = money(baseLabor);
+
 document.getElementById("bufferedLabor").textContent = money(bufferedLabor);
+
 document.getElementById("expenseValue").textContent = money(expenses);
+
 document.getElementById("profitValue").textContent = money(profitValue);
+
 document.getElementById("feeValue").textContent = money(feeValue);
+
 document.getElementById("finalPrice").textContent = money(finalPrice);
-document.getElementById("effectiveRate").textContent = money(effectiveRate) + " / hour";
+
+document.getElementById("effectiveRate").textContent =
+    money(effectiveRate) + " / hour";
 
 document.getElementById("result").style.display = "block";
+
 }
 
 function copyResult() {
 
-const finalPrice = document.getElementById("finalPrice").textContent;
-const effectiveRate = document.getElementById("effectiveRate").textContent;
+const finalPrice =
+document.getElementById("finalPrice").textContent;
+
+const effectiveRate =
+document.getElementById("effectiveRate").textContent;
 
 const text =
 "The Beneficial - Project Price Calculator\n\n" +
@@ -394,11 +481,12 @@ const text =
 
 navigator.clipboard.writeText(text)
 .then(function() {
-alert("Result copied!");
+    alert("Result copied!");
 })
 .catch(function() {
-alert("Unable to copy automatically. Please copy the result manually.");
+    alert("Unable to copy automatically. Please copy the result manually.");
 });
+
 }
 
 </script>
