@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Invoice Number Generator | The Beneficial</title>
@@ -9,11 +11,29 @@
 <meta name="description" content="Free invoice number generator for freelancers and small businesses. Create professional invoice numbers instantly.">
 
 <style>
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background: #f7faf7;
     color: #173b2a;
+}
+
+nav {
+    background: #173b2a;
+    padding: 16px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 main {
@@ -102,10 +122,47 @@ button:hover {
     line-height: 1.6;
     color: #555;
 }
+
+@media (max-width: 650px) {
+
+    nav a {
+        margin: 0 6px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    main {
+        padding: 40px 18px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="hourly-rate-calculator.html">Hourly Rate</a>
+
+<a href="work-hours-calculator.html">Work Hours</a>
+
+<a href="project-price-calculator.html">Project Price</a>
+
+<a href="invoice-number-generator.html">Invoice Generator</a>
+
+</nav>
 
 <main>
 
@@ -117,16 +174,40 @@ Create a professional invoice number instantly for your freelance or business in
 
 <div class="card">
 
-<label for="prefix">Invoice Prefix</label>
-<input id="prefix" type="text" value="INV">
+<label for="prefix">
+Invoice Prefix
+</label>
 
-<label for="number">Starting Number</label>
-<input id="number" type="number" value="1001" min="1">
+<input
+id="prefix"
+type="text"
+value="INV"
+>
 
-<label for="separator">Separator</label>
-<input id="separator" type="text" value="-">
+<label for="number">
+Starting Number
+</label>
 
-<button onclick="generateInvoice()">Generate Invoice Number</button>
+<input
+id="number"
+type="number"
+value="1001"
+min="1"
+>
+
+<label for="separator">
+Separator
+</label>
+
+<input
+id="separator"
+type="text"
+value="-"
+>
+
+<button onclick="generateInvoice()">
+Generate Invoice Number
+</button>
 
 <div class="result" id="result">
 
@@ -134,7 +215,10 @@ Create a professional invoice number instantly for your freelance or business in
 
 <div class="invoice-number" id="invoiceNumber"></div>
 
-<button class="copy-button" onclick="copyInvoice()">
+<button
+class="copy-button"
+onclick="copyInvoice()"
+>
 Copy Invoice Number
 </button>
 
@@ -153,30 +237,43 @@ For example: INV-1001, INV-1002, INV-1003.
 
 function generateInvoice() {
 
-    let prefix = document.getElementById("prefix").value.trim();
-    let number = document.getElementById("number").value;
-    let separator = document.getElementById("separator").value;
+let prefix =
+document.getElementById("prefix").value.trim();
 
-    if (!number) {
-        alert("Please enter a starting number.");
-        return;
-    }
+let number =
+document.getElementById("number").value;
 
-    let invoiceNumber = prefix + separator + number;
+let separator =
+document.getElementById("separator").value;
 
-    document.getElementById("invoiceNumber").textContent = invoiceNumber;
+if (!number) {
 
-    document.getElementById("result").style.display = "block";
+alert("Please enter a starting number.");
+
+return;
+
+}
+
+let invoiceNumber =
+prefix + separator + number;
+
+document.getElementById("invoiceNumber").textContent =
+invoiceNumber;
+
+document.getElementById("result").style.display =
+"block";
+
 }
 
 function copyInvoice() {
 
-    let invoiceNumber =
-        document.getElementById("invoiceNumber").textContent;
+let invoiceNumber =
+document.getElementById("invoiceNumber").textContent;
 
-    navigator.clipboard.writeText(invoiceNumber);
+navigator.clipboard.writeText(invoiceNumber);
 
-    alert("Invoice number copied!");
+alert("Invoice number copied!");
+
 }
 
 </script>
