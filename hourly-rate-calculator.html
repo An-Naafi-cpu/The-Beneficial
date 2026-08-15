@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freelance Hourly Rate Calculator | The Beneficial</title>
+  <meta name="description" content="Calculate a simple freelance hourly rate for free.">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; color: #173b2a; background: #f7faf7; }
+    main { max-width: 700px; margin: auto; padding: 50px 20px; }
+    a { color: #176b46; }
+    h1 { font-size: 36px; }
+    .card { background: white; padding: 26px; border-radius: 14px; margin-top: 25px; }
+    label { display: block; font-weight: bold; margin-top: 18px; }
+    input, select { box-sizing: border-box; width: 100%; padding: 12px; margin-top: 7px; border: 1px solid #c9d8cf; border-radius: 8px; font-size: 16px; }
+    button { width: 100%; margin-top: 24px; padding: 13px; border: 0; border-radius: 8px; background: #176b46; color: white; font-size: 17px; font-weight: bold; cursor: pointer; }
+    #result { display: none; text-align: center; background: #e7f4eb; padding: 20px; border-radius: 10px; margin-top: 22px; }
+    #rate { font-size: 32px; font-weight: bold; }
+    .note { font-size: 14px; color: #52665a; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="index.html">← Back to home</a>
+    <h1>Freelance Hourly Rate Calculator</h1>
+    <p>Find a starting hourly rate based on your income goal, costs, and available working time.</p>
+
+    <div class="card">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$">US Dollar ($)</option>
+        <option value="€">Euro (€)</option>
+        <option value="£">British Pound (£)</option>
+        <option value="₹">Indian Rupee (₹)</option>
+      </select>
+
+      <label for="income">Desired yearly income</label>
+      <input id="income" type="number" min="0" value="50000">
+
+      <label for="costs">Yearly business costs</label>
+      <input id="costs" type="number" min="0" value="0">
+
+      <label for="hours">Billable hours per week</label>
+      <input id="hours" type="number" min="1" value="20">
+
+      <label for="weeks">Working weeks per year</label>
+      <input id="weeks" type="number" min="1" value="48">
+
+      <button onclick="calculate()">Calculate my rate</button>
+
+      <div id="result">
+        <p>Your starting hourly rate:</p>
+        <div id="rate"></div>
+        <p class="note">This is an estimate. Consider taxes, experience, and your market before setting your final rate.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function calculate() {
+      const income = Number(document.getElementById("income").value);
+      const costs = Number(document.getElementById("costs").value);
+      const hours = Number(document.getElementById("hours").value);
+      const weeks = Number(document.getElementById("weeks").value);
+      const currency = document.getElementById("currency").value;
+
+      if (hours <= 0 || weeks <= 0) return;
+      const rate = (income + costs) / (hours * weeks);
+      document.getElementById("rate").textContent = currency + rate.toFixed(2) + " / hour";
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+</html>
