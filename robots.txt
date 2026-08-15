@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://an-naafi-cpu.github.io/The-Beneficial/sitemap.xml
