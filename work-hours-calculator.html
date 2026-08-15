@@ -1,68 +1,249 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Work Hours Calculator | The Beneficial</title>
-  <meta name="description" content="Calculate total work hours after breaks for free.">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; color: #173b2a; background: #f7faf7; }
-    main { max-width: 700px; margin: auto; padding: 50px 20px; }
-    a { color: #176b46; }
-    h1 { font-size: 36px; }
-    .card { background: white; padding: 26px; border-radius: 14px; margin-top: 25px; }
-    label { display: block; font-weight: bold; margin-top: 18px; }
-    input { box-sizing: border-box; width: 100%; padding: 12px; margin-top: 7px; border: 1px solid #c9d8cf; border-radius: 8px; font-size: 16px; }
-    button { width: 100%; margin-top: 24px; padding: 13px; border: 0; border-radius: 8px; background: #176b46; color: white; font-size: 17px; font-weight: bold; cursor: pointer; }
-    #result { display: none; text-align: center; background: #e7f4eb; padding: 20px; border-radius: 10px; margin-top: 22px; }
-    #total { font-size: 32px; font-weight: bold; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Work Hours Calculator | The Beneficial</title>
+
+<meta name="description" content="Calculate total working hours from your daily schedule and working days.">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #173b2a;
+    background: #f7faf7;
+}
+
+nav {
+    background: #173b2a;
+    padding: 16px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 700px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.intro {
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 26px;
+    border-radius: 14px;
+    margin-top: 25px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    margin-top: 24px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #176b45;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #125538;
+}
+
+#result {
+    display: none;
+    text-align: center;
+    background: #e7f4eb;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+#hours {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.note {
+    font-size: 14px;
+    color: #52655a;
+    line-height: 1.6;
+    margin-top: 25px;
+}
+
+.back-home {
+    display: inline-block;
+    margin-top: 25px;
+    color: #176b45;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
-  <main>
-    <a href="index.html">← Back to home</a>
-    <h1>Work Hours Calculator</h1>
-    <p>Calculate your total work time after subtracting your break.</p>
 
-    <div class="card">
-      <label for="start">Start time</label>
-      <input id="start" type="time" value="09:00">
+<nav>
+    <a href="index.html">Home</a>
+    <a href="hourly-rate-calculator.html">Hourly Rate</a>
+    <a href="work-hours-calculator.html">Work Hours</a>
+    <a href="project-price-calculator.html">Project Price</a>
+    <a href="invoice-number-generator.html">Invoice Generator</a>
+</nav>
 
-      <label for="end">End time</label>
-      <input id="end" type="time" value="17:00">
+<main>
 
-      <label for="break">Break time in minutes</label>
-      <input id="break" type="number" min="0" value="60">
+<h1>Work Hours Calculator</h1>
 
-      <button onclick="calculate()">Calculate work hours</button>
+<p class="intro">
+    Calculate your total working hours based on your daily schedule and number of working days.
+</p>
 
-      <div id="result">
-        <p>Your total work time:</p>
-        <div id="total"></div>
-      </div>
+<div class="card">
+
+    <label for="hoursPerDay">Working hours per day</label>
+
+    <input
+        id="hoursPerDay"
+        type="number"
+        min="0"
+        step="0.5"
+        value="8"
+        placeholder="Example: 8"
+    >
+
+
+    <label for="daysPerWeek">Working days per week</label>
+
+    <input
+        id="daysPerWeek"
+        type="number"
+        min="1"
+        max="7"
+        value="5"
+        placeholder="Example: 5"
+    >
+
+
+    <label for="weeksPerYear">Working weeks per year</label>
+
+    <input
+        id="weeksPerYear"
+        type="number"
+        min="1"
+        max="52"
+        value="48"
+        placeholder="Example: 48"
+    >
+
+
+    <button onclick="calculateHours()">
+        Calculate Work Hours
+    </button>
+
+
+    <div id="result">
+
+        <p>Your estimated annual working hours</p>
+
+        <div id="hours"></div>
+
+        <p>
+            This calculation is based on the information you entered.
+        </p>
+
     </div>
-  </main>
 
-  <script>
-    function calculate() {
-      const start = document.getElementById("start").value.split(":");
-      const end = document.getElementById("end").value.split(":");
-      const breakMinutes = Number(document.getElementById("break").value);
+</div>
 
-      let startMinutes = Number(start[0]) * 60 + Number(start[1]);
-      let endMinutes = Number(end[0]) * 60 + Number(end[1]);
+<p class="note">
+    Tip: Remember to account for holidays, vacation days, sick days,
+    breaks, and other non-working time when planning your annual capacity.
+</p>
 
-      if (endMinutes < startMinutes) endMinutes += 1440;
+<a class="back-home" href="index.html">← Back to The Beneficial</a>
 
-      const totalMinutes = endMinutes - startMinutes - breakMinutes;
-      if (totalMinutes < 0) return;
+</main>
 
-      const hours = Math.floor(totalMinutes / 60);
-      const minutes = totalMinutes % 60;
 
-      document.getElementById("total").textContent = hours + " hours " + minutes + " minutes";
-      document.getElementById("result").style.display = "block";
+<script>
+
+function calculateHours() {
+
+    const hoursPerDay =
+        Number(document.getElementById("hoursPerDay").value);
+
+    const daysPerWeek =
+        Number(document.getElementById("daysPerWeek").value);
+
+    const weeksPerYear =
+        Number(document.getElementById("weeksPerYear").value);
+
+
+    if (
+        hoursPerDay <= 0 ||
+        daysPerWeek <= 0 ||
+        weeksPerYear <= 0
+    ) {
+        alert("Please enter valid numbers in all fields.");
+        return;
     }
-  </script>
+
+
+    const totalHours =
+        hoursPerDay * daysPerWeek * weeksPerYear;
+
+
+    document.getElementById("hours").textContent =
+        totalHours.toLocaleString() + " hours";
+
+
+    document.getElementById("result").style.display = "block";
+}
+
+</script>
+
 </body>
 </html>
