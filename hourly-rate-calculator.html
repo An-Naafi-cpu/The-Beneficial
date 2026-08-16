@@ -4,9 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Freelance Hourly Rate Calculator | The Beneficial</title>
+<title>Freelance Hourly Rate Calculator India | The Beneficial</title>
 
-<meta name="description" content="Calculate a simple freelance hourly rate based on your income goal, costs, and available working time.">
+<meta name="description" content="Use this freelance hourly rate calculator for India to estimate your minimum hourly rate based on income, expenses, working hours and billable time.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://an-naafi-cpu.github.io/The-Beneficial/hourly-rate-calculator.html">
 
 <style>
 body {
@@ -34,9 +38,9 @@ nav a:hover {
 }
 
 main {
-    max-width: 700px;
+    max-width: 760px;
     margin: auto;
-    padding: 50px 20px;
+    padding: 45px 20px;
 }
 
 h1 {
@@ -45,9 +49,20 @@ h1 {
     margin-bottom: 15px;
 }
 
+h2 {
+    font-size: 26px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 25px;
+}
+
 .intro {
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 30px;
 }
 
@@ -66,14 +81,21 @@ label {
     margin-bottom: 8px;
 }
 
-select,
-input {
+input,
+select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
     box-sizing: border-box;
+}
+
+small {
+    display: block;
+    margin-top: 6px;
+    color: #52655a;
+    line-height: 1.5;
 }
 
 button {
@@ -105,6 +127,55 @@ button:hover {
 #rate {
     font-size: 32px;
     font-weight: bold;
+    margin: 10px 0;
+}
+
+.content {
+    line-height: 1.7;
+}
+
+.content p {
+    margin-bottom: 15px;
+}
+
+.content ul {
+    line-height: 1.8;
+}
+
+.info-box {
+    background: #eef6f0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.faq {
+    margin-top: 20px;
+}
+
+.faq-item {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.faq-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.guide-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #176b45;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.guide-link:hover {
+    text-decoration: underline;
 }
 
 .note {
@@ -121,6 +192,25 @@ button:hover {
     text-decoration: none;
     font-weight: bold;
 }
+
+@media (max-width: 600px) {
+    nav a {
+        display: inline-block;
+        margin: 5px 7px;
+    }
+
+    main {
+        padding: 30px 16px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+}
 </style>
 </head>
 
@@ -136,10 +226,12 @@ button:hover {
 
 <main>
 
-<h1>Freelance Hourly Rate Calculator</h1>
+<h1>Freelance Hourly Rate Calculator for India</h1>
 
 <p class="intro">
-    Find a starting hourly rate based on your income goal, costs, and available working time.
+    Calculate a practical starting hourly rate based on your income goal,
+    business expenses, working hours and the amount of time you can actually
+    bill to clients.
 </p>
 
 <div class="card">
@@ -147,10 +239,10 @@ button:hover {
     <label for="currency">Currency</label>
 
     <select id="currency">
+        <option value="₹">Indian Rupee (₹)</option>
         <option value="$">US Dollar ($)</option>
         <option value="€">Euro (€)</option>
         <option value="£">British Pound (£)</option>
-        <option value="₹">Indian Rupee (₹)</option>
     </select>
 
 
@@ -159,10 +251,15 @@ button:hover {
     <input
         id="income"
         type="number"
-        min="0"
-        value="50000"
-        placeholder="Example: 50000"
+        min="1"
+        value="600000"
+        placeholder="Example: 600000"
+        inputmode="decimal"
     >
+
+    <small>
+        Enter the annual income you want to earn from freelancing.
+    </small>
 
 
     <label for="expenses">Yearly business expenses</label>
@@ -171,9 +268,15 @@ button:hover {
         id="expenses"
         type="number"
         min="0"
-        value="5000"
-        placeholder="Example: 5000"
+        value="50000"
+        placeholder="Example: 50000"
+        inputmode="decimal"
     >
+
+    <small>
+        Include software, internet, equipment, subscriptions and other
+        freelance business costs.
+    </small>
 
 
     <label for="weeks">Working weeks per year</label>
@@ -185,6 +288,7 @@ button:hover {
         max="52"
         value="48"
         placeholder="Example: 48"
+        inputmode="numeric"
     >
 
 
@@ -194,36 +298,176 @@ button:hover {
         id="hours"
         type="number"
         min="1"
+        max="168"
         value="30"
         placeholder="Example: 30"
+        inputmode="numeric"
     >
 
 
-    <button onclick="calculateRate()">
+    <label for="billable">Billable time (%)</label>
+
+    <input
+        id="billable"
+        type="number"
+        min="1"
+        max="100"
+        value="70"
+        placeholder="Example: 70"
+        inputmode="numeric"
+    >
+
+    <small>
+        Not every working hour is billable. Time spent finding clients,
+        sending proposals, administration and marketing may not generate
+        direct income.
+    </small>
+
+
+    <button type="button" onclick="calculateRate()">
         Calculate Hourly Rate
     </button>
 
 
-    <div id="result">
+    <div id="result" aria-live="polite">
 
-        <p>Your recommended minimum hourly rate</p>
+        <p>Your estimated minimum hourly rate</p>
 
         <div id="rate"></div>
 
         <p>
-            This is a starting estimate based on the information you entered.
+            Use this as a starting point when setting your freelance pricing.
         </p>
 
     </div>
 
 </div>
 
-<p class="note">
-    Tip: Consider taxes, unpaid administrative time, holidays, sick days,
-    software costs, and other business expenses when deciding your final rate.
+
+<div class="content">
+
+<h2>How to calculate your freelance hourly rate</h2>
+
+<p>
+    A freelance hourly rate should cover both the income you want to earn
+    and the costs of running your freelance business. It should also account
+    for the fact that not every hour you work can be charged to a client.
 </p>
 
-<a class="back-home" href="index.html">← Back to The Beneficial</a>
+<p>
+    This calculator estimates your rate using your desired annual income,
+    business expenses, working time and estimated billable time.
+</p>
+
+<div class="info-box">
+    <strong>Simple formula:</strong><br><br>
+    Minimum hourly rate =
+    (Desired yearly income + yearly business expenses)
+    ÷ total billable hours
+</div>
+
+<h2>Why billable hours matter</h2>
+
+<p>
+    Freelancers often spend part of their working week on activities that
+    cannot be directly charged to a client. These can include finding new
+    clients, preparing proposals, answering emails, managing invoices,
+    learning new skills and handling administrative work.
+</p>
+
+<p>
+    For this reason, your total working hours and your billable hours are
+    not always the same. The billable-time percentage in this calculator
+    helps account for that difference.
+</p>
+
+<h2>Freelance rates in India</h2>
+
+<p>
+    Freelance rates in India can vary significantly depending on your skill,
+    experience, industry, client location, project complexity and demand for
+    your services. A beginner working with local clients may price very
+    differently from an experienced freelancer serving international
+    businesses.
+</p>
+
+<p>
+    Instead of copying someone else's hourly rate, use your own income goal,
+    costs and available working time to calculate a sustainable starting
+    point.
+</p>
+
+<p>
+    If you want to understand freelance pricing in more detail, see our
+    <a class="guide-link" href="freelance-hourly-rate-guide.html">
+        Freelance Hourly Rate Guide
+    </a>.
+</p>
+
+
+<h2>Frequently asked questions</h2>
+
+<div class="faq">
+
+    <div class="faq-item">
+        <h3>How do I calculate my freelance hourly rate in India?</h3>
+        <p>
+            Add your desired yearly income and yearly business expenses,
+            then divide the total by your expected annual billable hours.
+            This gives you a starting minimum hourly rate.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>What is a good freelance hourly rate in India?</h3>
+        <p>
+            There is no single rate that is right for every freelancer.
+            Your rate should reflect your skills, experience, niche,
+            expenses, client market and income goal.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>What are billable hours?</h3>
+        <p>
+            Billable hours are the hours you can charge directly to a client.
+            Client work is usually billable, while activities such as
+            marketing, administration and finding new clients may not be.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Should I include taxes in my freelance rate?</h3>
+        <p>
+            Taxes and other statutory costs can affect the amount you need
+            to earn. Consider your own tax situation and professional
+            requirements when setting your final rate.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Can I charge international clients in USD?</h3>
+        <p>
+            Yes. Freelancers in India may work with clients in India or
+            overseas. You can use the currency selector above to estimate
+            your rate in different currencies.
+        </p>
+    </div>
+
+</div>
+
+</div>
+
+
+<p class="note">
+    This calculator provides an estimate and is not financial or tax advice.
+    Consider taxes, holidays, sick days, unpaid administrative time,
+    payment fees and other business costs when deciding your final rate.
+</p>
+
+<a class="back-home" href="index.html">
+    ← Back to The Beneficial
+</a>
 
 </main>
 
@@ -234,24 +478,36 @@ function calculateRate() {
 
     const currency = document.getElementById("currency").value;
 
-    const income =
-        Number(document.getElementById("income").value);
+    const income = Number(
+        document.getElementById("income").value
+    );
 
-    const expenses =
-        Number(document.getElementById("expenses").value);
+    const expenses = Number(
+        document.getElementById("expenses").value
+    );
 
-    const weeks =
-        Number(document.getElementById("weeks").value);
+    const weeks = Number(
+        document.getElementById("weeks").value
+    );
 
-    const hours =
-        Number(document.getElementById("hours").value);
+    const hours = Number(
+        document.getElementById("hours").value
+    );
+
+    const billable = Number(
+        document.getElementById("billable").value
+    );
 
 
     if (
         income <= 0 ||
         expenses < 0 ||
         weeks <= 0 ||
-        hours <= 0
+        weeks > 52 ||
+        hours <= 0 ||
+        hours > 168 ||
+        billable <= 0 ||
+        billable > 100
     ) {
         alert("Please enter valid numbers in all fields.");
         return;
@@ -260,18 +516,39 @@ function calculateRate() {
 
     const totalIncome = income + expenses;
 
-    const totalHours = weeks * hours;
+    const totalWorkingHours = weeks * hours;
 
-    const hourlyRate = totalIncome / totalHours;
+    const totalBillableHours =
+        totalWorkingHours * (billable / 100);
+
+    const hourlyRate =
+        totalIncome / totalBillableHours;
 
 
     document.getElementById("rate").textContent =
         currency + hourlyRate.toFixed(2);
 
-
     document.getElementById("result").style.display = "block";
 }
 
+</script>
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Freelance Hourly Rate Calculator India",
+    "url": "https://an-naafi-cpu.github.io/The-Beneficial/hourly-rate-calculator.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser",
+    "description": "A free freelance hourly rate calculator for estimating a minimum hourly rate based on income goals, expenses, working hours and billable time.",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+    }
+}
 </script>
 
 </body>
